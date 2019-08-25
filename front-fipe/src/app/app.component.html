@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+      <h1>Bem Vindo ao {{title}}! </h1>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <label>Escolha a marca</label>
+        <ng-select [items]="brands"
+                   bindLabel="name"
+                   placeholder="Selecione uma marca"
+                   (change)="filterModels(selectedBrand)"
+                   [(ngModel)]="selectedBrand">
+        </ng-select>
+    </div>
+    <div class="col-sm">
+      <label>Escolha o modelo</label>
+        <ng-select [items]="vehicles"
+                   bindLabel="name"                                     
+                   placeholder="{{selecao}}"
+                   (change)="getSentences()"
+                   [(ngModel)]="selectedVehicle">
+        </ng-select>
+    </div>
+  </div>
+  <div class="row"><br></div>
+  <div class="row">
+      <ul class="col-sm" style="list-style-type: none;">
+          <li *ngFor="let sentence of sentences">
+              {{ sentence }}
+          </li>
+        </ul>
+  </div>
+</div>        
+<div style="margin-top:300px"></div>
