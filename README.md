@@ -13,9 +13,9 @@ Projeto com frontend e backend que informa o valor e o percentual da alteração
 ### Instalação
 
 1. Faça o clone deste projeto com `git clone https://github.com/renatodotlira/fipe.git`
-2. Entre na pasta do projeto app-fipe no terminal e instale as dependências com `npm install`
+2. Entre na pasta do projeto front-fipe no terminal e instale as dependências com `npm install`
 3. Rode a aplicação com `ng serve`
-4. Abra o projeto app-fipe no intellij
+4. Abra o projeto back-fipe no intellij
 5. Instale o plugin do lombok `File > Settings > Plugins`
 6. Execute a classe `TabelafipeApplication.java`
 7. Abra o navegador e acesse `http://localhost:4200/`
