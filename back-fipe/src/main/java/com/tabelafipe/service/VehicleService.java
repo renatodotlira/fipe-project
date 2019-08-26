@@ -8,6 +8,6 @@ public interface VehicleService {
 
     List<VehicleDto> listByBrand(Long idBrand);
 
-    List<String> ListDepretiations(Long idBrand, Long idModel);
+    List<String> listDepretiations(Long idBrand, Long idModel);
 
 }

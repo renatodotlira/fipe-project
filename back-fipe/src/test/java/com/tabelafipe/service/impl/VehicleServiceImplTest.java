@@ -32,7 +32,7 @@ public class VehicleServiceImplTest {
     }
 
     @Test
-    public void listByBrand_OK(){
+    public void listDepretiations_OK(){
         List<Vehicle> vehicles = vehiclesList_dummy();
         Vehicle vehicle = Vehicle.builder()
                             .id("000")
@@ -66,7 +66,7 @@ public class VehicleServiceImplTest {
         sentences.add("Valor em 2018 -> R$ 75,00 alteração de R$ 25,00 (25%) em relação a 2019,");
         sentences.add("Valor em 2017 -> R$ 70,00 alteração de R$ 5,00 (6,6%) em relação a 2018");
 
-        assertEquals(sentences ,vehicleService.ListDepretiations(0L, 0L));
+        assertEquals(sentences ,vehicleService.listDepretiations(0L, 0L));
     }
 
 

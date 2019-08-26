@@ -23,7 +23,7 @@ public class VehicleController {
     @GetMapping("/depreciations/brands/{idBrand}/models/{idModel}")
     public List<String> listDepreciations(@PathVariable("idBrand") Long idBrand,
                                           @PathVariable("idModel") Long idModel){
-        return vehicleService.ListDepretiations(idBrand, idModel);
+        return vehicleService.listDepretiations(idBrand, idModel);
     }
 
 }

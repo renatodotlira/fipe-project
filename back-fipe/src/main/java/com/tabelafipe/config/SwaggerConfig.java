@@ -20,7 +20,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.tabelafipe.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.tabelafipe.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

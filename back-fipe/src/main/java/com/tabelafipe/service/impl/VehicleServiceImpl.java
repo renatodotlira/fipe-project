@@ -25,7 +25,7 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public List<String> ListDepretiations(Long idBrand, Long idModel) {
+    public List<String> listDepretiations(Long idBrand, Long idModel) {
         List<Vehicle> vehicles;
         vehicles = fipeClient.listAllVehiclesByModel(idBrand, idModel);
         SetValueVehicleAnnual valueVehicleAnnual = new SetValueVehicleAnnual();
