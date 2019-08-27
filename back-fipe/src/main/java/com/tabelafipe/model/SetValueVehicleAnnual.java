@@ -1,7 +1,5 @@
 package com.tabelafipe.model;
 
-import com.tabelafipe.dto.ValueVehicleAnnualDto;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,20 +8,20 @@ import static com.tabelafipe.util.Utils.formatPercent;
 
 public class SetValueVehicleAnnual {
 
-    private List<ValueVehicleAnnualDto> valueVehicleAnnualDtos = new ArrayList<>();
+    private List<ValueVehicleAnnual> valueVehicleAnnuals = new ArrayList<>();
 
     private DecimalFormat formatator = new DecimalFormat("#,##0.00");
 
     public void add(Vehicle vehicle){
-        ValueVehicleAnnualDto valueVehicleAnnualDto = new ValueVehicleAnnualDto();
-        valueVehicleAnnualDto.setPreco(vehicle.getPrecoDouble());
-        valueVehicleAnnualDto.setSentense(getSentence(vehicle));
-        valueVehicleAnnualDto.setYear(vehicle.getAnoModelo());
-        valueVehicleAnnualDtos.add(valueVehicleAnnualDto);
+        ValueVehicleAnnual valueVehicleAnnual = new ValueVehicleAnnual();
+        valueVehicleAnnual.setPreco(vehicle.getPrecoDouble());
+        valueVehicleAnnual.setSentense(getSentence(vehicle));
+        valueVehicleAnnual.setYear(vehicle.getAnoModelo());
+        valueVehicleAnnuals.add(valueVehicleAnnual);
     }
 
     /**
-     *Monta as frases que serão exibidas no frontend e salva em uma lista de ValueVehicleAnnualDto,
+     *Monta as frases que serão exibidas no frontend e salva em uma lista de ValueVehicleAnnual,
      * há uma verificação se a lista já possui outros elementos, se houver, então atualiza o último elemento
      * da lista, acrescentando uma vírgula ao final da sentença no elemento. Também é usado os dados
      * do último elemento da lista para fazer os cálculos de depreciação no elemento atual em relação
@@ -34,8 +32,8 @@ public class SetValueVehicleAnnual {
      */
     private String getSentence(Vehicle vehicle){
         String sentence;
-        if(valueVehicleAnnualDtos.size() > 0) {
-            ValueVehicleAnnualDto lastElement = getLastElement();
+        if(valueVehicleAnnuals.size() > 0) {
+            ValueVehicleAnnual lastElement = getLastElement();
             lastElement.addToSentence(",");
             sentence = createSentenceWithComparison(vehicle, lastElement);
         }else{
@@ -44,21 +42,21 @@ public class SetValueVehicleAnnual {
         return sentence;
     }
 
-    public List<String> getValueVehicleAnnualDtos(){
+    public List<String> getValueVehicleAnnuals(){
         List<String> sentences = new ArrayList<>();
-        valueVehicleAnnualDtos.forEach(depreciationDto -> sentences.add(depreciationDto.getSentense()));
+        valueVehicleAnnuals.forEach(depreciationDto -> sentences.add(depreciationDto.getSentense()));
         return sentences;
     }
 
-    private ValueVehicleAnnualDto getLastElement(){
-        return valueVehicleAnnualDtos.get(valueVehicleAnnualDtos.size()-1);
+    private ValueVehicleAnnual getLastElement(){
+        return valueVehicleAnnuals.get(valueVehicleAnnuals.size()-1);
     }
 
     private String createSentence(Vehicle vehicle){
         return "Valor em " + vehicle.getAnoModelo() + " -> " + vehicle.getPreco();
     }
 
-    private String createSentenceWithComparison(Vehicle vehicle, ValueVehicleAnnualDto lastElement){
+    private String createSentenceWithComparison(Vehicle vehicle, ValueVehicleAnnual lastElement){
         String sentence = createSentence(vehicle);
         double diference = lastElement.getPreco() - vehicle.getPrecoDouble();
         double percent = (diference * 100) / lastElement.getPreco();

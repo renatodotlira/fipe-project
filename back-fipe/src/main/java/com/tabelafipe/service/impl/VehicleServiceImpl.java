@@ -33,7 +33,7 @@ public class VehicleServiceImpl implements VehicleService {
             detail = fipeClient.getDetailVehicle(idBrand, idModel, detail.getKey());
             valueVehicleAnnual.add(detail);
         }
-        return valueVehicleAnnual.getValueVehicleAnnualDtos();
+        return valueVehicleAnnual.getValueVehicleAnnuals();
     }
 
     private List<VehicleDto> toDtoList(List<Vehicle> vehicles){
